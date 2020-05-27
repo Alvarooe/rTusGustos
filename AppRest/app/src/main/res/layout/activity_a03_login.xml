@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="@dimen/padding_grande"
+    style="@style/fondo_color"
+    tools:context=".A03LoginActivity">
+
+    <ImageView
+        android:src="@drawable/logo"
+        android:layout_width="250dp"
+        android:layout_height="150dp"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="@dimen/espaciado_grande"/>
+    <EditText
+        android:id="@+id/etCorreo"
+        android:layout_width="@dimen/ancho_control_grande"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:hint="@string/etLogin_correo"
+        style="@style/texto_grande"
+        android:layout_marginBottom="@dimen/espaciado_grande"/>
+    <EditText
+        android:id="@+id/etContrasena"
+        android:layout_width="@dimen/ancho_control_grande"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:hint="@string/etLogin_contraseña"
+        android:inputType="textPassword"
+        style="@style/texto_grande"
+        android:layout_marginBottom="@dimen/espaciado_grande"/>
+    <CheckBox
+        android:id="@+id/chkGuardarSesion"
+        android:layout_width="@dimen/ancho_control_grande"
+        android:layout_height="wrap_content"
+        android:text="@string/guardar_sesion"
+        android:layout_marginBottom="@dimen/margen_normal"/>
+    <Button
+        android:id="@+id/btnIniciarSesion"
+        android:layout_width="@dimen/ancho_control_grande"
+        android:layout_height="wrap_content"
+        android:text="@string/btLogin_inicio"
+        android:layout_centerInParent="true"
+        style="@style/boton_accent"
+        android:layout_marginBottom="@dimen/espaciado_mediano"/>
+    <Button
+        android:id="@+id/btRegistrar"
+        android:layout_width="@dimen/ancho_control_grande"
+        android:layout_height="wrap_content"
+        android:text="@string/btLogin_registro"
+        android:layout_centerInParent="true"
+        style="@style/boton_accent_inverso"/>
+
+
+</LinearLayout>

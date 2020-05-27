@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="@dimen/padding_grande"
+    style="@style/fondo_color"
+    tools:context=".A02RegisterActivity">
+
+    <ImageView
+        android:layout_width="250dp"
+        android:layout_height="150dp"
+        android:src="@drawable/logo"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="@dimen/espaciado_grande"/>
+    <EditText
+        android:id="@+id/etNombre"
+        android:layout_width="@dimen/ancho_control_grande"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:hint="@string/etRegister_nombre"
+        style="@style/texto_grande"
+        android:layout_marginBottom="@dimen/espaciado_grande"/>
+    <EditText
+        android:id="@+id/etUsuario"
+        android:layout_width="@dimen/ancho_control_grande"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:hint="@string/etRegister_usuario"
+        style="@style/texto_grande"
+        android:layout_marginBottom="@dimen/espaciado_grande"/>
+    <EditText
+        android:id="@+id/etContrasena"
+        android:layout_width="@dimen/ancho_control_grande"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:hint="@string/etRegister_contraseña"
+        style="@style/texto_grande"
+        android:layout_marginBottom="@dimen/espaciado_grande"/>
+    <Button
+        android:id="@+id/btRegistrarse"
+        android:layout_width="@dimen/ancho_control_grande"
+        android:layout_height="wrap_content"
+        android:text="@string/btRegister_registro"
+        android:layout_centerInParent="true"
+        style="@style/boton_accent"
+        android:layout_marginBottom="@dimen/espaciado_mediano"/>
+
+</LinearLayout>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".A08bPedido2Fragment">
+
+    <!--<LinearLayout
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".A08bPedido2Fragment">-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+    <TextView
+        android:id="@+id/tvPedido"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/detalle_de_pedido"
+        android:layout_gravity="center"
+        android:textAlignment="center"
+        style="@style/display_mediano"
+        android:layout_marginTop="@dimen/margen_pequeño"
+        android:layout_marginBottom="@dimen/margen_normal"/>
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="?android:attr/listDivider" />
+
+    <ListView
+        android:id="@+id/lvProductos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margen_pequeño"></ListView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:layout_marginBottom="@dimen/margen_grande">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Total"
+                style="@style/display_pequeño"/>
+            <TextView
+                android:id="@+id/tvTotal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/display_pequeño"
+                android:layout_marginLeft="@dimen/margen_pequeño"/>
+        </LinearLayout>
+        <Button
+            android:id="@+id/btPedir"
+            android:layout_width="@dimen/ancho_control_grande"
+            android:layout_height="wrap_content"
+            android:text="@string/hacer_pedido"
+            android:layout_gravity="center"
+            style="@style/boton_accent"
+            android:layout_marginBottom="@dimen/espaciado_mediano"/>
+        <Button
+            android:id="@+id/btLimpiar"
+            android:layout_width="@dimen/ancho_control_grande"
+            android:layout_height="wrap_content"
+            android:text="@string/limpiar"
+            android:layout_gravity="center"
+            style="@style/boton_accent"
+            android:layout_marginBottom="@dimen/espaciado_mediano"/>
+    </LinearLayout>
+</LinearLayout>
+
+</ScrollView>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--Ya tiene padding: botón-->
+    <dimen name="padding_pequeño_inferior">10dp</dimen>
+    <dimen name="padding_pequeño">12dp</dimen>
+    <dimen name="padding_normal">24dp</dimen>
+    <dimen name="padding_grande">36dp</dimen>
+    <dimen name="padding_control">@dimen/padding_normal</dimen>
+
+    <dimen name="margen_pequeño">12dp</dimen>
+    <dimen name="margen_normal">24dp</dimen>
+    <dimen name="margen_grande">36dp</dimen>
+    <dimen name="margen_barraApp">16dp</dimen>
+
+    <dimen name="espaciado_pequeño">8dp</dimen>
+    <dimen name="espaciado_mediano">16dp</dimen>
+    <dimen name="espaciado_grande">24dp</dimen>
+
+    <dimen name="tamaño_fuente_pequeña_inferior">10sp</dimen>
+    <dimen name="tamaño_fuente_pequeña">12sp</dimen>
+    <dimen name="tamaño_fuente_mediana_inferior">16sp</dimen>
+    <dimen name="tamaño_fuente_mediana">18sp</dimen>
+    <dimen name="tamaño_fuente_mediana_superior">20sp</dimen>
+    <dimen name="tamaño_fuente_grande">24sp</dimen>
+    <dimen name="tamaño_fuente_muy_grande">32sp</dimen>
+
+    <dimen name="ancho_control_grande">180dp</dimen>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="nav_header_vertical_spacing">8dp</dimen>
+    <dimen name="nav_header_height">176dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+</resources>

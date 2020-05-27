@@ -1,0 +1,176 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <!--<item name="android:fontFamily">@font/raleway_regular</item>-->
+        <item name="android:fontFamily">@font/typo_grotesk_rounded</item>
+        <item name="android:textSize">@dimen/tamaño_fuente_mediana_inferior</item>
+        <item name="android:color">@color/colorTexto</item>
+        <item name="windowActionBar">true</item>
+        <item name="windowNoTitle">false</item>
+        <item name="android:statusBarColor">@color/colorTertiary</item> <!--OK-->
+        <item name="android:background">@color/colorTertiary</item> <!--OK-->
+        <!--<item name="android:actionMenuTextColor">@color/colorNegro</item>--> <!--KO?-->
+        <!--<item name="android:titleTextColor">@color/colorNegro</item>--> <!--KO-->
+        <!--<item name="android:titleTextStyle">@style/AppTheme.ActionBar.TitleTextStyle</item>
+        <item name="titleTextStyle">@style/AppTheme.ActionBar.TitleTextStyle</item>-->
+        <item name="color">@color/colorAccent</item>
+        <item name="drawerArrowStyle">@style/DrawerArrowStyle</item>
+        <item name="android:textColorSecondary">@color/colorNegro</item><!--icono 3 puntos-->
+        <!--<item name="android:actionOverflowButtonStyle">@style/MyActionButtonOverflow</item>--><!--KO-->
+        <item name="actionOverflowButtonStyle">@style/DotsDarkTheme</item>
+        <!--<item name="android:actionOverflowButtonStyle">@style/MyCustomTheme.OverFlow</item>--><!--!-->
+        <!--<item name="android:navigationBarColor">@color/colorAccent</item>--><!--OK-->
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <!--<style name="AppTheme.ActionBarStyle" parent ="@style/TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="android:textColor">#FF0000</item>
+    </style>-->
+    <!--<style name="AppTheme.ActionBar.TitleTextStyle" parent ="@style/TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="android:textColor">#FF0000</item>
+    </style>-->
+    <style name="DrawerArrowStyle" parent="@style/Widget.AppCompat.DrawerArrowToggle">
+        <item name="spinBars">true</item>
+        <item name="color">@android:color/black</item>
+    </style>
+    <!--<style name="MyCustomTheme.OverFlow">
+        <item name="android:src">@drawable/my_overflow_image</item>
+
+    </style>--> <!--!-->
+    <!--<style name="MyActionButtonOverflow" parent="android:style/Widget.Holo.ActionButton.Overflow">
+        <item name="color">@android:color/black</item>
+    </style>-->
+
+    <style name="DotsDarkTheme" parent="@style/Widget.AppCompat.ActionButton.Overflow">
+        <item name="android:tint">@color/colorNegro</item>
+    </style>
+
+    <style name="fuente_texto" parent="android:Widget.TextView">
+        <item name="android:fontFamily">@font/criticized</item>
+    </style>
+
+    <style name="fuente_texto_condensado" parent="android:Widget.TextView">
+        <item name="android:fontFamily">@font/criticized</item>
+    </style>
+
+    <style name="fuente_texto_expandido" parent="android:Widget.TextView">
+        <item name="android:fontFamily">@font/typo_grotesk_rounded</item>
+    </style>
+
+    <style name="fuente_texto_display" parent="android:Widget.Button">
+        <item name="android:fontFamily">@font/lato_regular</item>
+    </style>
+
+    <style name="fuente_display" parent="android:Widget.TextView">
+        <item name="android:fontFamily">@font/lato_bold</item>
+    </style>
+
+    <style name="fuente_display_condensado" parent="android:Widget.TextView">
+        <item name="android:fontFamily">@font/oswald_bold</item>
+    </style>
+
+    <style name="texto_mediano" parent="fuente_texto">
+        <!--<item name="android:fontFamily">@font/raleway_regular</item>-->
+        <!--<item name="android:fontFamily">@font/criticized</item>-->
+        <item name="android:textSize">@dimen/tamaño_fuente_mediana_inferior</item>
+    </style>
+
+    <style name="texto_pequeño" parent="fuente_texto">
+        <!--<item name="android:fontFamily">@font/raleway_regular</item>-->
+        <!--<item name="android:fontFamily">@font/criticized</item>-->
+        <item name="android:textSize">@dimen/tamaño_fuente_pequeña</item>
+    </style>
+
+    <!--<style name="texto_grande" parent="android:Widget.TextView">-->
+    <style name="texto_grande" parent="fuente_texto">
+        <!--<item name="android:fontFamily">@font/raleway_regular</item>-->
+        <!--<item name="android:fontFamily">@font/criticized</item>-->
+        <item name="android:textSize">@dimen/tamaño_fuente_mediana_superior</item>
+    </style>
+
+    <style name="texto_mediano_especial" parent="fuente_texto_expandido">
+        <!--<item name="android:fontFamily">@font/typo_grotesk_rounded</item>-->
+        <item name="android:textSize">@dimen/tamaño_fuente_grande</item>
+    </style>
+
+    <style name="display_mediano" parent="fuente_display">
+        <!--<item name="android:fontFamily">@font/lato_bold</item>-->
+        <item name="android:textSize">@dimen/tamaño_fuente_grande</item>
+        <item name="android:textColor">@color/colorDisplay</item>
+    </style>
+
+    <style name="display_pequeño" parent="fuente_display">
+        <!--<item name="android:fontFamily">@font/lato_bold</item>-->
+        <item name="android:textSize">@dimen/tamaño_fuente_mediana_inferior</item>
+        <item name="android:textColor">@color/colorDisplay</item>
+    </style>
+
+    <style name="display_grande" parent="fuente_display">
+        <!--<item name="android:fontFamily">@font/lato_bold</item>-->
+        <item name="android:textSize">@dimen/tamaño_fuente_muy_grande</item>
+        <item name="android:textColor">@color/colorDisplay</item>
+    </style>
+
+    <style name="display_mediano_especial" parent="fuente_display_condensado">
+        <!--<item name="android:fontFamily">@font/oswald_bold</item>-->
+        <item name="android:textSize">@dimen/tamaño_fuente_grande</item>
+        <item name="android:textColor">@color/colorDisplay</item>
+    </style>
+
+    <style name="display_grande_especial" parent="fuente_display_condensado">
+        <!--<item name="android:fontFamily">@font/oswald_bold</item>-->
+        <item name="android:textSize">@dimen/tamaño_fuente_muy_grande</item>
+        <item name="android:textColor">@color/colorDisplay</item>
+    </style>
+
+    <!--<style name="display_grande_especial_accent" parent="android:Widget.TextView">-->
+    <style name="display_grande_especial_accent" parent="fuente_display_condensado">
+        <!--<item name="android:fontFamily">@font/oswald_bold</item>-->
+        <item name="android:textSize">@dimen/tamaño_fuente_muy_grande</item>
+        <item name="android:textColor">@color/colorAccent</item>
+    </style>
+
+    <style name="boton_normal" parent="fuente_texto_display">
+        <!--<item name="android:fontFamily">@font/lato_regular</item>-->
+        <item name="android:textSize">@dimen/tamaño_fuente_mediana</item>
+        <item name="android:textColor">@color/colorTextoBoton</item>
+        <item name="android:padding">@dimen/padding_pequeño_inferior</item>
+    </style>
+
+    <style name="boton_primarydark" parent="boton_normal">
+        <item name="android:background">@color/colorPrimaryDark</item>
+        <item name="android:textColor">@color/colorBlanco</item>
+    </style>
+
+    <style name="boton_accent" parent="boton_normal">
+        <item name="android:background">@color/colorAccent</item>
+        <item name="android:textColor">@color/colorBlanco</item>
+    </style>
+
+    <style name="boton_accent_inverso" parent="boton_normal">
+        <item name="android:background">@drawable/boton_accent_inverso</item>
+        <item name="android:textColor">@color/colorAccent</item>
+    </style>
+
+    <style name="fondo_color">
+        <item name="android:background">@color/colorTertiary</item>
+    </style>
+
+    <!--<style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar">-->
+    <!--<item name="actionBarItemBackground">@color/colorTertiary</item>-->
+    <!--<item name="android:background">@color/colorTertiary</item>-->
+    <!--</style>-->
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+</resources>

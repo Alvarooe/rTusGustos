@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#E26490</color>
+    <color name="colorPrimaryDark">#E84054</color>
+    <color name="colorAccent">#842D8C</color>
+    <color name="colorSecondary">#7E321A</color>
+    <!--<color name="colorTertiary">#FCFFDB</color>-->
+    <color name="colorTertiary">#F1F2D0</color> <!--#E3DB4C-->
+    <color name="colorNegro">#000000</color>
+    <color name="colorBlanco">#FFFFFF</color>
+    <color name="colorAzabache">#1F1F1F</color>
+    <color name="colorGrisOsc">#920C0C0C</color>
+
+    <color name="colorDisplay">@color/colorAzabache</color>
+    <!--<color name="colorTexto">@color/colorAzabache</color>-->
+    <color name="colorTexto">@color/colorNegro</color>
+    <color name="colorTextoBoton">@color/colorNegro</color>
+    <color name="colorBotonP">@color/colorPrimaryDark</color>
+    <color name="colorBotonA">@color/colorAccent</color>
+</resources>

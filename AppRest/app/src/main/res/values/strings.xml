@@ -1,0 +1,85 @@
+<resources>
+    <string name="app_name">TusGustos</string>
+    <string name="app_slogan">Gourmet a tu medida</string>
+
+    <string name="act_login">Inicio de sesión</string>
+    <string name="act_register">Registro</string>
+    <string name="act_platform">Plataforma</string>
+    <string name="act_carta">Carta</string>
+    <string name="act_pedido">Pedido</string>
+    <string name="act_promocion">Promoción</string>
+    <string name="act_perfil">Perfil</string>
+    <string name="act_nosotros">Nosotros</string>
+
+    <string name="tvMain_titulo">Tus Gustos</string>
+    <string name="tvMain_parrafo">Te brindamos una experiencia acorde con tus preferencias</string>
+    <string name="btMain_inicio_n">Sumérgete ahora</string>
+
+    <string name="etLogin_correo">Correo</string>
+    <string name="etLogin_contraseña">Contraseña</string>
+    <string name="btLogin_inicio">Iniciar sesión</string>
+    <string name="btLogin_registro">Regístrate</string>
+
+    <string name="etRegister_nombre">Nombre</string>
+    <string name="etRegister_usuario">Usuario</string>
+    <string name="etRegister_contraseña">Contraseña</string>
+    <string name="btRegister_registro">Registrarme</string>
+
+    <!--<string name="title_activity_desk">Plataforma</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Xpresso</string>
+    <string name="nav_header_subtitle">xpresso@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>-->
+
+    <string name="menu_inicio">Inicio</string><!--home-->
+    <string name="menu_menu">Carta</string><!--gallery-->
+    <string name="menu_pedido">Pedido</string><!--slideshow-->
+    <string name="menu_promocion">Promoción</string><!--slideshow-->
+    <string name="menu_contacto">Contacto</string><!--tools-->
+    <string name="menu_ayuda">Ayuda</string><!--share-->
+    <string name="menu_salir">Salir</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string><!--send-->
+    <string name="categorias">Categorías</string>
+    <string name="productos">Especialidades</string>
+    <string name="detalle">Detalle de especialidad</string>
+
+    <string name="tvContacto_direccion">Av. Las Begonias 999, San Isidro</string>
+    <string name="tvContacto_correo">servicioalcliente@tusgustos.com.pe</string>
+    <string name="tvContacto_telefono">999-999-999</string>
+    <string name="tvContacto_url">http://www.tusgustos.com</string>
+
+    <string name="title_activity_a05_platform">Plataforma</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">TusGustos</string>
+    <string name="nav_header_subtitle">tusgustos@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_tools">Tools</string>
+    <string name="menu_share">Share</string>
+    <string name="menu_send">Send</string>
+    <string name="guardar_sesion">Guardando la sesión</string>
+    <string name="detalle_de_pedido">Detalle de pedido</string>
+    <string name="cerrar_sesion">Cerrar sesión</string>
+    <string name="hecho">Hecho</string>
+    <string name="hacer_pedido">Hacer pedido</string>
+    <string name="limpiar">Limpiar</string>
+    <!--<string name="tvMain_registro1_n">¿Aún no se ha registrado?</string>
+    <string name="tvMain_registro2_n">Regístrese</string>-->
+
+    <!--<string name="tvLogin_usuario_n">Usuario</string>
+    <string name="etLogin_usuario_n">Su usuario</string>
+    <string name="tvLogin_contraseña_n">Contraseña</string>
+    <string name="etLogin_contraseña_n">Su contraseña</string>
+    <string name="btLogin_iniciar_n">Inicie sesión</string>-->
+
+
+</resources>
