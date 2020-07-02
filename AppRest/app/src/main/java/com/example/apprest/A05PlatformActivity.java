@@ -30,6 +30,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.view.Menu;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import datos.Coleccion;
@@ -72,6 +73,7 @@ public class A05PlatformActivity extends AppCompatActivity
 
             }
         });
+        fab.hide();
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -120,7 +122,7 @@ public class A05PlatformActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_inicio) {
-            // Handle the camera action
+            mostrarPlataforma();
         } else if (id == R.id.nav_menu) {
             //mostrarMenu();
             mostrarMenu2();
@@ -129,8 +131,8 @@ public class A05PlatformActivity extends AppCompatActivity
             mostrarPedido();
             //mostrarMenu2();
 
-        } else if (id == R.id.nav_promocion) {
-            mostrarPromocion();
+        //} else if (id == R.id.nav_promocion) {
+        //    mostrarPromocion();
             //mostrarMenu2();
 
         } else if (id == R.id.nav_contacto) {
@@ -147,6 +149,11 @@ public class A05PlatformActivity extends AppCompatActivity
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    private void mostrarPlataforma() {
+        LinearLayout ll = findViewById(R.id.contenedor_principal);
+        ll.removeAllViews();
     }
 
     private void salir() {
@@ -197,6 +204,9 @@ public class A05PlatformActivity extends AppCompatActivity
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.contenedor_principal, new A06bMenu2Fragment())
                 .commit();
+        /*getSupportFragmentManager().beginTransaction()
+                .replace(R.id.contenedor_principal, new A06xMenuFragment())
+                .commit();*/
     }
 
     private void mostrarPedido() {
@@ -206,6 +216,9 @@ public class A05PlatformActivity extends AppCompatActivity
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.contenedor_principal, new A08bPedido2Fragment())
                 .commit();
+        /*getSupportFragmentManager().beginTransaction()
+                .replace(R.id.contenedor_principal, new A08xPedidoFragment())
+                .commit();*/
     }
 
     private void mostrarPromocion() {

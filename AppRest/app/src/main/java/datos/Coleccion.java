@@ -5,6 +5,7 @@ import android.app.Application;
 import java.util.ArrayList;
 import java.util.List;
 
+//ColeccionDetallePedido
 public class Coleccion extends Application {
     public static ArrayList micoleccion;
     /*private List<String> coleccion;

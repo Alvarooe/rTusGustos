@@ -9,6 +9,7 @@ public class Parametros {
     //public ArrayList coleccion;
     public static Double Total;
     public static int PedidoHecho;
+    public static String Respuesta;
 
 
 }

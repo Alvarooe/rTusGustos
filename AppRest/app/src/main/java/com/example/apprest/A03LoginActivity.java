@@ -12,6 +12,8 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ListAdapter;
+import android.widget.SimpleAdapter;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -30,13 +32,20 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import datos.Categoria;
 import datos.Cliente;
 import datos.Coleccion;
+import datos.ColeccionCategoria;
+import datos.ColeccionProducto;
+import datos.ColeccionRegla;
+import datos.Producto;
 
 public class A03LoginActivity extends AppCompatActivity implements View.OnClickListener {
     Button mbtnIniciarSesion, mbtRegistrar;
     EditText metCorreo, metContrasena;
     CheckBox mchkGuardarSesion;
+    Categoria categoria;
+    Producto producto;
 
     AnimationDrawable frameAnimation;
 
@@ -142,17 +151,110 @@ public class A03LoginActivity extends AppCompatActivity implements View.OnClickL
                 Cliente.estado = jsonObject.getString("estado");
                 //Parametros.coleccion = new ArrayList<>();
                 Coleccion.micoleccion = new ArrayList<>();
+                ColeccionRegla.micoleccionregla = new ArrayList<>();
+                ColeccionCategoria.micoleccioncategoria = new ArrayList<>();
+                ColeccionProducto.micoleccionproducto = new ArrayList<>();
                 Parametros.Total = 0.0;
                 Parametros.PedidoHecho = 0;
-
+                Parametros.Respuesta = "";
 
                 Toast.makeText(this,"Bienvenido, " + Cliente.nombre,Toast.LENGTH_SHORT).show();
+                leerCategorias();
+                leerProductos();
                 startActivity(new Intent(this,A05PlatformActivity.class));
                 verificarGuardarSesion(response);
                 finish();
             } catch (JSONException e) {
                 e.printStackTrace();
             }
+        }
+    }
+
+    private void leerCategorias() {
+        RequestQueue queue = Volley.newRequestQueue(this);
+        String url = Parametros.rutaServidor + "listcategoria.php";
+
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        //final String response2 = response;
+                        //Log.d("Categorías: ", response);
+                        //Toast.makeText(getApplicationContext(), response,Toast.LENGTH_LONG).show(); //ok
+                        guardarCategorias(response);
+                    }
+
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError volleyError) {
+                Log.e("Categorías: ", volleyError.getMessage());
+            }
+        });
+
+        queue.add(stringRequest);
+    }
+
+    private void guardarCategorias(String response) {
+        //Toast.makeText(this,"Ok", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this,response, Toast.LENGTH_SHORT).show();
+        try {
+            //Esto es para que el texto sea interpretado en formato JSON
+            JSONArray jsonArray = new JSONArray(response);
+            //ArrayList<HashMap<String,String>> arrayList = new ArrayList<>();
+            for(int i = 0; i< jsonArray.length(); i++){
+                categoria = new Categoria();
+                JSONObject jsonObject = jsonArray.getJSONObject(i);
+                categoria.idct = jsonObject.getString("idct");
+                categoria.categoriades = jsonObject.getString("categoriades");
+                ColeccionCategoria.micoleccioncategoria.add(i,categoria);
+            }
+            //Toast.makeText(this,"Tamaño: " + ColeccionCategoria.micoleccioncategoria.size(), Toast.LENGTH_SHORT).show();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    private void leerProductos() {
+        RequestQueue queue = Volley.newRequestQueue(this);
+        String url = Parametros.rutaServidor + "listproducto.php";
+
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        Log.d("Productos: ", response);
+                        guardarProductos(response);
+                    }
+
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError volleyError) {
+                Log.e("Categorías: ", volleyError.getMessage());
+            }
+        });
+
+        queue.add(stringRequest);
+    }
+
+    private void guardarProductos(String response) {
+        try {
+            //Esto es para que el texto sea interpretado en formato JSON
+            JSONArray jsonArray = new JSONArray(response);
+            //ArrayList<HashMap<String,String>> arrayList = new ArrayList<>();
+            for(int i = 0; i< jsonArray.length(); i++){
+                producto = new Producto();
+                JSONObject jsonObject = jsonArray.getJSONObject(i);
+                producto.idpt = jsonObject.getString("idpt");
+                producto.productodes = jsonObject.getString("productodes");
+                producto.idct = jsonObject.getString("idct");
+                producto.precio = jsonObject.getString("precio");
+                producto.rutaimagen = jsonObject.getString("rutaimagen");
+                ColeccionProducto.micoleccionproducto.add(i,producto);
+            }
+            //Toast.makeText(this,"Tamaño: " + ColeccionProducto.micoleccionproducto.size(), Toast.LENGTH_SHORT).show();
+        } catch (JSONException e) {
+            e.printStackTrace();
         }
     }
 

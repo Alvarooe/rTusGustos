@@ -25,6 +25,7 @@ import datos.Cliente;
 
 public class A02RegisterActivity extends AppCompatActivity implements View.OnClickListener {
     EditText metNombre, metUsuario, metContrasena;
+    EditText metApellidoPaterno, metApellidoMaterno, metSexo, metFechaNacimiento, metDistritoResidencia;
     Button mbtRegistrarse;
 
 
@@ -33,6 +34,11 @@ public class A02RegisterActivity extends AppCompatActivity implements View.OnCli
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_a02_register);
         metNombre = findViewById(R.id.etNombre);
+        metApellidoPaterno = findViewById(R.id.etApellidoPaterno);
+        metApellidoMaterno = findViewById(R.id.etApellidoMaterno);
+        metSexo = findViewById(R.id.etSexo);
+        metFechaNacimiento = findViewById(R.id.etFechaNacimiento);
+        metDistritoResidencia = findViewById(R.id.etDistritoResidencia);
         metUsuario = findViewById(R.id.etUsuario);
         metContrasena = findViewById(R.id.etContrasena);
         mbtRegistrarse = findViewById(R.id.btRegistrarse);
@@ -50,15 +56,15 @@ public class A02RegisterActivity extends AppCompatActivity implements View.OnCli
 
     private void registrarse() {
         final String nombre = metNombre.getText().toString();
-        final String apellidopaterno = "xx";
-        final String apellidomaterno = "xx";
+        final String apellidopaterno = metApellidoPaterno.getText().toString();
+        final String apellidomaterno = metApellidoMaterno.getText().toString();
         final String dni = "99999999";
         final String celular = "999999999";
         final String correoelectronico = "";
-        final String sexo = "H";
-        final String fechanacimiento = "15/01/2000";
-        final String ciudadresidencia = "";
-        final String distritoresidencia = "";
+        final String sexo = metSexo.getText().toString();
+        final String fechanacimiento = metFechaNacimiento.getText().toString(); //"15/01/2000";
+        final String ciudadresidencia = "Lima";
+        final String distritoresidencia = metDistritoResidencia.getText().toString();
         final String estado = "Activo";
         final String usuario = metUsuario.getText().toString();
         final String contrasena = metContrasena.getText().toString();

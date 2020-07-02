@@ -23,6 +23,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -31,14 +32,18 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import datos.Categoria;
+import datos.ColeccionCategoria;
+
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class A06bMenu2Fragment extends Fragment implements AdapterView.OnItemClickListener {
 
-    ListView mlvCategorias;
     ArrayList<HashMap<String,String>> arrayList;
+    Categoria categoria;
+    ListView mlvCategorias;
 
     public A06bMenu2Fragment() {
         // Required empty public constructor
@@ -56,10 +61,13 @@ public class A06bMenu2Fragment extends Fragment implements AdapterView.OnItemCli
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         mlvCategorias = view.findViewById(R.id.lvCategorias);
-        leerCategorias();
+        //obtenerCategorias();
+        mostrarCategorias();
+        FloatingActionButton fab = getActivity().findViewById(R.id.fab);
+        fab.hide();
     }
 
-    private void leerCategorias() {
+    private void obtenerCategorias() {
         RequestQueue queue = Volley.newRequestQueue(getActivity());
         String url = Parametros.rutaServidor + "listcategoria.php";
 
@@ -67,8 +75,8 @@ public class A06bMenu2Fragment extends Fragment implements AdapterView.OnItemCli
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        Log.d("Categorías: ", response);
-                        mostrarListaCategorias(response);
+                        //Log.d("Categorías: ", response);
+                        mostrarCategorias0(response);
                     }
 
                 }, new Response.ErrorListener() {
@@ -81,11 +89,9 @@ public class A06bMenu2Fragment extends Fragment implements AdapterView.OnItemCli
         queue.add(stringRequest);
     }
 
-    private void mostrarListaCategorias(String response) {
+    private void mostrarCategorias0(String response) {
         try {
-            //Esto es para que el texto sea interpretado en formato JSON
             JSONArray jsonArray = new JSONArray(response);
-            //ArrayList<HashMap<String,String>> arrayList = new ArrayList<>();
             arrayList = new ArrayList<>();
             for(int i = 0; i< jsonArray.length(); i++){
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
@@ -112,23 +118,47 @@ public class A06bMenu2Fragment extends Fragment implements AdapterView.OnItemCli
 
     }
 
+    private void mostrarCategorias() {
+        try {
+            arrayList =  new ArrayList<>();
+            for(int i = 0; i< ColeccionCategoria.micoleccioncategoria.size(); i++){
+                categoria = (Categoria) ColeccionCategoria.micoleccioncategoria.get(i);
+                String idct = categoria.idct;
+                String categoriades = categoria.categoriades;
+                HashMap<String,String> map = new HashMap<>();
+                map.put("idct", idct);
+                map.put("categoriades", categoriades);
+                arrayList.add(map);
+            }
+
+            ListAdapter listAdapter = new SimpleAdapter(
+                    getActivity(), arrayList,R.layout.item_categorias,
+                    new String[]{"idct","categoriades"},
+                    new int[]{R.id.tvIdCT,R.id.tvCategoriaDes}
+            );
+
+            mlvCategorias.setAdapter(listAdapter);
+            mlvCategorias.setOnItemClickListener(this);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
         HashMap<String,String> map = arrayList.get(position);
-        //Se obtiene en un HashMap el elemento del arraylist seleccionado
 
         String idct = map.get("idct");
         String categoriades = map.get("categoriades");
-        //Se obtiene el contenidon de un campo del HashMap
 
-        Toast.makeText(getActivity(),categoriades,Toast.LENGTH_SHORT).show();
-        Log.d("Categoría: ", categoriades + " - " + idct + " - " + position);
-
+        //Toast.makeText(getActivity(),categoriades,Toast.LENGTH_SHORT).show();
+        //Log.d("Categoría: ", categoriades + " - " + idct + " - " + position);
 
         Bundle bundle = new Bundle();
         bundle.putString("idct",idct);
         bundle.putString("categoriades",categoriades);
-
 
         //String idct2 = bundle.getString("idct");
         //String categoriades2 = bundle.getString("categoriades");
@@ -137,27 +167,16 @@ public class A06bMenu2Fragment extends Fragment implements AdapterView.OnItemCli
         //A07DetalleFragment a07DetalleFragment = new A07DetalleFragment();
         //A07bDetalle2Fragment a07bDetalle2Fragment = new A07bDetalle2Fragment();
         A07cDetalle3Fragment a07cDetalle3Fragment = new A07cDetalle3Fragment();
-
-        //a07DetalleFragment.setArguments(bundle);
-        //a07bDetalle2Fragment.setArguments(bundle);
         a07cDetalle3Fragment.setArguments(bundle);
 
-        //Para llamar desde un fragment a otro fragment
         /*getFragmentManager().beginTransaction()
                 .replace(R.id.contenedor_principal,a07bDetalle2Fragment)
-                .commit();*/
-        /*getFragmentManager().beginTransaction()
-                .replace(R.id.contenedor_principal,a07bDetalle2Fragment)
-                .addToBackStack(null)
                 .commit();*/
         getActivity().getSupportFragmentManager().beginTransaction()
                 .replace(R.id.contenedor_principal, a07cDetalle3Fragment,"A06bMenu2Fragment")
                 .addToBackStack(null)
                 .commit();
 
-        //getActivity() hace referencia al activity en el que está contenido el fragment
-
-        //Con setTitle se cambia el titulo del Activity
         //getActivity().setTitle(categoriades + "\n Especialidades");
     }
 }

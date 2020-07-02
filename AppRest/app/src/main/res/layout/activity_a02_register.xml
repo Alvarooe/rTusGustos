@@ -10,23 +10,71 @@
     style="@style/fondo_color"
     tools:context=".A02RegisterActivity">
 
-    <ImageView
+    <!--<ImageView
         android:layout_width="250dp"
         android:layout_height="150dp"
         android:src="@drawable/logo"
         android:layout_centerInParent="true"
-        android:layout_marginBottom="@dimen/espaciado_grande"/>
+        android:layout_marginBottom="@dimen/espaciado_grande"/>-->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center">
     <EditText
         android:id="@+id/etNombre"
-        android:layout_width="@dimen/ancho_control_grande"
+        android:layout_width="@dimen/ancho_control_muy_grande"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:hint="@string/etRegister_nombre"
         style="@style/texto_grande"
         android:layout_marginBottom="@dimen/espaciado_grande"/>
     <EditText
+        android:id="@+id/etApellidoPaterno"
+        android:layout_width="@dimen/ancho_control_muy_grande"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:hint="@string/etRegister_apellido_paterno"
+        style="@style/texto_grande"
+        android:layout_marginBottom="@dimen/espaciado_grande"/>
+    <EditText
+        android:id="@+id/etApellidoMaterno"
+        android:layout_width="@dimen/ancho_control_muy_grande"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:hint="@string/etRegister_apellido_materno"
+        style="@style/texto_grande"
+        android:layout_marginBottom="@dimen/espaciado_grande"/>
+    <EditText
+        android:id="@+id/etSexo"
+        android:layout_width="@dimen/ancho_control_muy_grande"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:hint="@string/etSexo"
+        style="@style/texto_grande"
+        android:layout_marginBottom="@dimen/espaciado_grande"/>
+    <EditText
+        android:id="@+id/etFechaNacimiento"
+        android:layout_width="@dimen/ancho_control_muy_grande"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:hint="@string/etRegister_fecha_nacimiento"
+        style="@style/texto_grande"
+        android:layout_marginBottom="@dimen/espaciado_grande"/>
+    <EditText
+        android:id="@+id/etDistritoResidencia"
+        android:layout_width="@dimen/ancho_control_muy_grande"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:hint="@string/etRegister_distrito_residencia"
+        style="@style/texto_grande"
+        android:layout_marginBottom="@dimen/espaciado_grande"/>
+    <EditText
         android:id="@+id/etUsuario"
-        android:layout_width="@dimen/ancho_control_grande"
+        android:layout_width="@dimen/ancho_control_muy_grande"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:hint="@string/etRegister_usuario"
@@ -34,7 +82,7 @@
         android:layout_marginBottom="@dimen/espaciado_grande"/>
     <EditText
         android:id="@+id/etContrasena"
-        android:layout_width="@dimen/ancho_control_grande"
+        android:layout_width="@dimen/ancho_control_muy_grande"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:hint="@string/etRegister_contraseña"
@@ -48,5 +96,6 @@
         android:layout_centerInParent="true"
         style="@style/boton_accent"
         android:layout_marginBottom="@dimen/espaciado_mediano"/>
-
+    </LinearLayout>
+    </ScrollView>
 </LinearLayout>

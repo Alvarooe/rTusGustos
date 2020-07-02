@@ -46,6 +46,8 @@
     <string name="categorias">Categorías</string>
     <string name="productos">Especialidades</string>
     <string name="detalle">Detalle de especialidad</string>
+    <string name="detalle_de_pedido">Detalle de pedido</string>
+    <string name="promociones">Promociones</string>
 
     <string name="tvContacto_direccion">Av. Las Begonias 999, San Isidro</string>
     <string name="tvContacto_correo">servicioalcliente@tusgustos.com.pe</string>
@@ -67,11 +69,19 @@
     <string name="menu_share">Share</string>
     <string name="menu_send">Send</string>
     <string name="guardar_sesion">Guardando la sesión</string>
-    <string name="detalle_de_pedido">Detalle de pedido</string>
     <string name="cerrar_sesion">Cerrar sesión</string>
+
     <string name="hecho">Hecho</string>
     <string name="hacer_pedido">Hacer pedido</string>
     <string name="limpiar">Limpiar</string>
+    <string name="etRegister_apellido_paterno">Apellido paterno</string>
+    <string name="etRegister_apellido_materno">Apellido materno</string>
+    <string name="etSexo">Sexo</string>
+    <string name="etRegister_fecha_nacimiento">Fecha de nacimiento</string>
+    <string name="etRegister_distrito_residencia">Distrito de residencia</string>
+    <string name="recomendacion">Promoción Personalizada</string>
+    <string name="aceptar">Aceptar y continuar</string>
+    <string name="rechazar">Solo continuar</string>
     <!--<string name="tvMain_registro1_n">¿Aún no se ha registrado?</string>
     <string name="tvMain_registro2_n">Regístrese</string>-->
 

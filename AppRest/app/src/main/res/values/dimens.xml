@@ -15,6 +15,7 @@
     <dimen name="espaciado_pequeño">8dp</dimen>
     <dimen name="espaciado_mediano">16dp</dimen>
     <dimen name="espaciado_grande">24dp</dimen>
+    <dimen name="espaciado_muy_grande">36dp</dimen>
 
     <dimen name="tamaño_fuente_pequeña_inferior">10sp</dimen>
     <dimen name="tamaño_fuente_pequeña">12sp</dimen>
@@ -24,7 +25,10 @@
     <dimen name="tamaño_fuente_grande">24sp</dimen>
     <dimen name="tamaño_fuente_muy_grande">32sp</dimen>
 
+    <dimen name="ancho_control_mediano">120dp</dimen>
     <dimen name="ancho_control_grande">180dp</dimen>
+    <dimen name="ancho_control_muy_grande">220dp</dimen>
+    <!--<dimen name="ancho_control_muy_grande">250dp</dimen>-->
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>

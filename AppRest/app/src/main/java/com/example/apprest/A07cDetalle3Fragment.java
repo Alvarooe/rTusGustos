@@ -23,6 +23,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -35,7 +36,9 @@ import java.util.Map;
 import datos.Cliente;
 import datos.Coleccion;
 import datos.Coleccion2;
+import datos.ColeccionProducto;
 import datos.DetallePedidoProvisional;
+import datos.Producto;
 
 
 /**
@@ -43,10 +46,11 @@ import datos.DetallePedidoProvisional;
  */
 public class A07cDetalle3Fragment extends Fragment implements AdapterView.OnItemClickListener {
 
+    ArrayList<HashMap<String,String>> arrayList;
+    Producto producto;
+    DetallePedidoProvisional detallePedidoProvisional;
     TextView mtvCategoria;
     ListView mlvProductos;
-    ArrayList<HashMap<String,String>> arrayList;
-    DetallePedidoProvisional detallePedidoProvisional;
 
     public A07cDetalle3Fragment() {
         // Required empty public constructor
@@ -65,7 +69,6 @@ public class A07cDetalle3Fragment extends Fragment implements AdapterView.OnItem
         mlvProductos = view.findViewById(R.id.lvProductos);
 
         Bundle bundle = getArguments();
-
         String idct = bundle.getString("idct");
         String categoriades = bundle.getString("categoriades");
 
@@ -75,20 +78,21 @@ public class A07cDetalle3Fragment extends Fragment implements AdapterView.OnItem
 
         arrayList = new ArrayList<>();
 
-        leerProductos(idct);
+        //obtenerProductos(idct);
+        mostrarProductos(idct);
+        FloatingActionButton fab = getActivity().findViewById(R.id.fab);
+        fab.show();
     }
 
-    private void leerProductos(final String idct) {
+    private void obtenerProductos(final String idct) {
         RequestQueue queue = Volley.newRequestQueue(getActivity());
         String url = Parametros.rutaServidor + "listcategoriaproducto.php" + "?id=" + idct;
-        //Log.d("PRODUCTOS idct: ", idct);
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        Log.d("PRODUCTOS",response);
-                        mostrarListaProductos(response);
+                        mostrarProductos0(response);
                     }
                 }, new Response.ErrorListener() {
             @Override
@@ -106,32 +110,25 @@ public class A07cDetalle3Fragment extends Fragment implements AdapterView.OnItem
         queue.add(stringRequest);
     }
 
-    private void mostrarListaProductos(String response) {
+    private void mostrarProductos0(String response) {
         try {
-            //Log.d("PRODUCTOS (mostrarLP): ",response);
             JSONArray jsonArray = new JSONArray(response);
             for(int i= 0; i<jsonArray.length(); i++){
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
                 String idpt = jsonObject.getString("idpt");
                 String productodes = jsonObject.getString("productodes");
-                String idct2 = jsonObject.getString("idct");
+                String idct = jsonObject.getString("idct");
                 String precio = jsonObject.getString("precio");
                 String rutaimagen = jsonObject.getString("rutaimagen");
                 HashMap<String,String> map = new HashMap<>();
                 map.put("idpt",idpt);
                 map.put("productodes",productodes);
+                map.put("idct", idct);
                 map.put("precio",precio);
                 map.put("rutaimagen",rutaimagen);
                 arrayList.add(map);
             }
-            /*
-            ListAdapter listAdapter = new SimpleAdapter(
-                    getActivity(),arrayList,R.layout.item_productos,
-                    new String[]{"idproducto","nombre","detalle","precio"},
-                    new int[]{R.id.tvIdproducto,R.id.tvNombre,R.id.tvDetalle,R.id.tvPrecio}
-            );
-            mlvProductos.setAdapter(listAdapter);
-            */
+
             ProductosAdapter productosAdapter = new ProductosAdapter(getActivity(),arrayList);
             mlvProductos.setAdapter(productosAdapter);
             mlvProductos.setOnItemClickListener(this);
@@ -140,28 +137,50 @@ public class A07cDetalle3Fragment extends Fragment implements AdapterView.OnItem
         }
     }
 
+    private void mostrarProductos(String idct) {
+        try {
+            arrayList =  new ArrayList<>();
+            for(int i = 0; i< ColeccionProducto.micoleccionproducto.size(); i++){
+                producto = (Producto) ColeccionProducto.micoleccionproducto.get(i);
+                if (producto.idct.equals(idct)) {
+                    HashMap<String, String> map = new HashMap<>();
+                    map.put("idpt",producto.idpt);
+                    map.put("productodes",producto.productodes);
+                    map.put("idct", producto.idct);
+                    map.put("precio",producto.precio);
+                    map.put("rutaimagen",producto.rutaimagen);
+                    arrayList.add(map);
+                }
+            }
+            ProductosAdapter productosAdapter = new ProductosAdapter(getActivity(),arrayList);
+            mlvProductos.setAdapter(productosAdapter);
+            mlvProductos.setOnItemClickListener(this);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         HashMap<String,String> map = arrayList.get(position);
 
         final String idpt = map.get("idpt");
         final String productodes = map.get("productodes");
+        final String idct = map.get("idct");
         final String precio = map.get("precio");
 
         if (Parametros.PedidoHecho == 1) {
             Toast.makeText(getActivity(),"Limpie pedido anterior",Toast.LENGTH_SHORT).show();
         }
         else {
-            añadir(idpt, productodes, precio);
+            añadir(idpt, productodes, idct, precio);
             Toast.makeText(getActivity(), "Se añadió " + productodes, Toast.LENGTH_SHORT).show();
         }
-        //Log.d("Producto añadido: ", productodes + " - " + idpt + " - " + position);
     }
 
-    public void añadir(String idpt, String productdes, String precio) {
-        //Coleccion coleccion = (Coleccion) getActivity().getApplicationContext();
+    public void añadir(String idpt, String productdes, String idct, String precio) {
         int i;
-        //Toast.makeText(getActivity(),"Tamaño colección: " + idpt + " - " + Coleccion.micoleccion.size(),Toast.LENGTH_SHORT).show();
         for (i=0; i<Coleccion.micoleccion.size(); i=i+1)
         {
             detallePedidoProvisional = (DetallePedidoProvisional) Coleccion.micoleccion.get(i);
@@ -179,11 +198,11 @@ public class A07cDetalle3Fragment extends Fragment implements AdapterView.OnItem
         detallePedidoProvisional = new DetallePedidoProvisional();
         detallePedidoProvisional.idpt = idpt;
         detallePedidoProvisional.productodes = productdes;
+        detallePedidoProvisional.idct = idct;
         detallePedidoProvisional.precio = precio;
+        detallePedidoProvisional.descuento = "0";
         detallePedidoProvisional.cantidad = 1;
-        //Log.d("Posicion: ", String.valueOf(i));
         Coleccion.micoleccion.add(i,detallePedidoProvisional);
         return;
-
     }
 }
