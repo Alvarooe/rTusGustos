@@ -28,7 +28,7 @@ public class A088RecomendacionFragment extends Fragment implements View.OnClickL
     Button mbtAceptar, mbtRechazar;
     TextView mtvPromocion;
     Bundle bundle;
-    String idpt, precio;
+    String idpt, precio, idpr;
     String productodes = "", idct = "", preciooriginal = "";
     DetallePedidoProvisional detallePedidoProvisional;
     Producto producto;
@@ -50,6 +50,8 @@ public class A088RecomendacionFragment extends Fragment implements View.OnClickL
         super.onViewCreated(view, savedInstanceState);
         mtvPromocion = view.findViewById(R.id.tvPromocion);
         mbtAceptar = view.findViewById(R.id.btAceptar);
+        mbtAceptar.setEnabled(true);
+        mbtAceptar.setAlpha(1f);
         mbtAceptar.setOnClickListener(this);
         mbtRechazar = view.findViewById(R.id.btRechazar);
         mbtRechazar.setOnClickListener(this);
@@ -58,6 +60,7 @@ public class A088RecomendacionFragment extends Fragment implements View.OnClickL
 
         idpt = bundle.getString("idpt");
         precio = bundle.getString("precio");
+        idpr = bundle.getString("idpr");
 
         for(int i=0; i < ColeccionProducto.micoleccionproducto.size(); i++) {
             producto = (Producto) ColeccionProducto.micoleccionproducto.get(i);
@@ -73,8 +76,11 @@ public class A088RecomendacionFragment extends Fragment implements View.OnClickL
 
     @Override
     public void onClick(View v) {
+        A08bPedido2Fragment.idpr = idpr;
         switch (v.getId()) {
             case R.id.btAceptar:
+                mbtAceptar.setEnabled(false);
+                mbtAceptar.setAlpha(.5f);
                 //bundle.putString("respuesta", "1");
                 Parametros.Respuesta = "1";
                 modificar();

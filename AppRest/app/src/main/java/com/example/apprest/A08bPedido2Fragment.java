@@ -5,7 +5,6 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.fragment.app.Fragment;
 
 import android.util.Log;
@@ -33,7 +32,11 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.lang.reflect.Field;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -56,6 +59,7 @@ public class A08bPedido2Fragment extends Fragment implements AdapterView.OnItemC
     ListView mlvProductos;
     TextView mtvTotal;
     Button mbtPedir, mbtLimpiar;
+    static String idpr;
 
     public A08bPedido2Fragment() {
         // Required empty public constructor
@@ -362,6 +366,7 @@ public class A08bPedido2Fragment extends Fragment implements AdapterView.OnItemC
                     Bundle bundle = new Bundle();
                     bundle.putString("idpt",recomendacion.idpt);
                     bundle.putString("precio",recomendacion.precio);
+                    bundle.putString("idpr",recomendacion.idpr);
                     A088RecomendacionFragment a088RecomendacionFragment = new A088RecomendacionFragment();
 
                     a088RecomendacionFragment.setArguments(bundle);
@@ -400,7 +405,9 @@ public class A08bPedido2Fragment extends Fragment implements AdapterView.OnItemC
     private void pedir() {
 
         final String referencia = "";
-        final String fechahorapedido = "";
+        Date date1 = Calendar.getInstance().getTime();
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+        final String fechahorapedido = dateFormat.format(date1);
         final String idcliente = Cliente.idCliente;
         final String monto = Parametros.Total.toString();
         final String estado = "Pendiente";
@@ -442,7 +449,6 @@ public class A08bPedido2Fragment extends Fragment implements AdapterView.OnItemC
                 return map;
             }
         };
-// Add the request to the RequestQueue.
         queue.add(stringRequest);
 
     }
@@ -453,10 +459,47 @@ public class A08bPedido2Fragment extends Fragment implements AdapterView.OnItemC
             JSONObject jsonObject = jsonArray.getJSONObject(0);
             String idpe = jsonObject.getString("idpe");
             enviarDetalle(idpe);
+            if (!Parametros.Respuesta.equals("")) {
+                enviarRespuestaPromocion(idpe);
+            }
         } catch (JSONException e) {
             e.printStackTrace();
         }
+    }
 
+    private void enviarRespuestaPromocion(final String idpe) {
+        final String idpr = A08bPedido2Fragment.idpr;
+        final String respuesta = Parametros.Respuesta;
+        Date date1 = Calendar.getInstance().getTime();
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+        final String fechahorarespuestapromocion = dateFormat.format(date1);
+
+        RequestQueue queue = Volley.newRequestQueue(getActivity());
+        String url = Parametros.rutaServidor + "createrespuestapromocion_s.php";
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        Log.d("RESPUESTA",response);
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.e("ERROR",error.getMessage());
+            }
+        }){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                HashMap<String,String> map = new HashMap<>();
+                map.put("idpr",idpr);
+                map.put("idpe", idpe);
+                map.put("respuesta",respuesta);
+                map.put("fechahorarespuestapromocion",fechahorarespuestapromocion);
+                return map;
+            }
+        };
+        queue.add(stringRequest);
     }
 
     private void enviarDetalle(final String idpe) {
