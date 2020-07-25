@@ -38,7 +38,6 @@ public class A085EdicionPedidoFragment extends Fragment implements View.OnClickL
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_a085_edicion_pedido, container, false);
     }
 
@@ -76,9 +75,6 @@ public class A085EdicionPedidoFragment extends Fragment implements View.OnClickL
         {
             detallePedidoProvisional = new DetallePedidoProvisional();
             detallePedidoProvisional = (DetallePedidoProvisional)Coleccion.micoleccion.get(posicion);
-            //detallePedidoProvisional.idpt = idpt;
-            //detallePedidoProvisional.productodes = productodes;
-            //detallePedidoProvisional.precio = precio;
             detallePedidoProvisional.cantidad = Integer.parseInt(cantidad);
             Coleccion.micoleccion.set(posicion,detallePedidoProvisional);
         }

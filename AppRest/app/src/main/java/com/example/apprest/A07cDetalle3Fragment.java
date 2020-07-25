@@ -78,63 +78,9 @@ public class A07cDetalle3Fragment extends Fragment implements AdapterView.OnItem
 
         arrayList = new ArrayList<>();
 
-        //obtenerProductos(idct);
         mostrarProductos(idct);
         FloatingActionButton fab = getActivity().findViewById(R.id.fab);
         fab.show();
-    }
-
-    private void obtenerProductos(final String idct) {
-        RequestQueue queue = Volley.newRequestQueue(getActivity());
-        String url = Parametros.rutaServidor + "listcategoriaproducto.php" + "?id=" + idct;
-
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        mostrarProductos0(response);
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Log.e("PRODUCTOS",error.getMessage());
-            }
-        }) {
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                HashMap<String, String> map = new HashMap<>();
-                map.put("id", idct);
-                return map;
-            }
-        };
-        queue.add(stringRequest);
-    }
-
-    private void mostrarProductos0(String response) {
-        try {
-            JSONArray jsonArray = new JSONArray(response);
-            for(int i= 0; i<jsonArray.length(); i++){
-                JSONObject jsonObject = jsonArray.getJSONObject(i);
-                String idpt = jsonObject.getString("idpt");
-                String productodes = jsonObject.getString("productodes");
-                String idct = jsonObject.getString("idct");
-                String precio = jsonObject.getString("precio");
-                String rutaimagen = jsonObject.getString("rutaimagen");
-                HashMap<String,String> map = new HashMap<>();
-                map.put("idpt",idpt);
-                map.put("productodes",productodes);
-                map.put("idct", idct);
-                map.put("precio",precio);
-                map.put("rutaimagen",rutaimagen);
-                arrayList.add(map);
-            }
-
-            ProductosAdapter productosAdapter = new ProductosAdapter(getActivity(),arrayList);
-            mlvProductos.setAdapter(productosAdapter);
-            mlvProductos.setOnItemClickListener(this);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
     }
 
     private void mostrarProductos(String idct) {

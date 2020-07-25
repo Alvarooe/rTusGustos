@@ -6,9 +6,58 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    android:padding="@dimen/padding_grande"
+    android:paddingHorizontal="@dimen/padding_grande"
+    android:paddingBottom="@dimen/padding_grande"
     style="@style/fondo_color"
     tools:context=".A02RegisterActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+        <!--<com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal">-->
+
+        <!--<androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/colorTertiary"
+            app:titleTextColor="@color/colorNegro"
+            android:gravity="center"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />-->
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:titleTextColor="@color/colorPrimaryDark"
+            app:contentInsetLeft="0dp"
+            app:contentInsetStart="0dp"
+            android:gravity="center"
+            app:popupTheme="@style/AppTheme.PopupOverlay">
+            <!--<TextView
+                android:id="@+id/toolbar_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/Estilo"
+                android:layout_gravity="center">
+
+            </TextView>-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:srcCompat="@mipmap/ic_logo_round" />
+            </LinearLayout>
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
 
     <!--<ImageView
         android:layout_width="250dp"
@@ -17,6 +66,7 @@
         android:layout_centerInParent="true"
         android:layout_marginBottom="@dimen/espaciado_grande"/>-->
     <ScrollView
+        android:paddingTop="@dimen/padding_grande"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
     <LinearLayout

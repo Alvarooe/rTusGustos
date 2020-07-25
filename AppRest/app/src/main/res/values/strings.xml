@@ -37,7 +37,7 @@
     <string name="menu_menu">Carta</string><!--gallery-->
     <string name="menu_pedido">Pedido</string><!--slideshow-->
     <string name="menu_promocion">Promoción</string><!--slideshow-->
-    <string name="menu_contacto">Contacto</string><!--tools-->
+    <string name="menu_contacto">Nosotros</string><!--tools-->
     <string name="menu_ayuda">Ayuda</string><!--share-->
     <string name="menu_salir">Salir</string>
 
@@ -49,15 +49,18 @@
     <string name="detalle_de_pedido">Detalle de pedido</string>
     <string name="promociones">Promociones</string>
 
+    <string name="tvContacto_nosotros_titulo">Sobre nosotros</string>
+    <string name="tvContacto_nosotros_texto">Brindamos ofertas gourmet adaptadas a tus preferencias, con un servicio ágil y calificado.</string>
+    <string name="tvContacto_contacto_titulo">Contáctanos</string>
     <string name="tvContacto_direccion">Av. Las Begonias 999, San Isidro</string>
     <string name="tvContacto_correo">servicioalcliente@tusgustos.com.pe</string>
     <string name="tvContacto_telefono">999-999-999</string>
     <string name="tvContacto_url">http://www.tusgustos.com</string>
 
-    <string name="title_activity_a05_platform">Plataforma</string>
+    <string name="title_activity_a05_platform">Tus Gustos</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">TusGustos</string>
+    <string name="nav_header_title">Tus Gustos</string>
     <string name="nav_header_subtitle">tusgustos@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>

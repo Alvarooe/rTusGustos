@@ -41,7 +41,6 @@ public class A088RecomendacionFragment extends Fragment implements View.OnClickL
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_a088_recomendacion, container, false);
     }
 
@@ -96,21 +95,9 @@ public class A088RecomendacionFragment extends Fragment implements View.OnClickL
     }
 
     private void modificar() {
-        //Toast.makeText(getActivity(),idpt + ":" + precio,Toast.LENGTH_SHORT).show();
-
-        /*for(int i=0; i < ColeccionProducto.micoleccionproducto.size(); i++) {
-            producto = (Producto) ColeccionProducto.micoleccionproducto.get(i);
-            if (producto.idpt.equals(idpt)) {
-                productodes = producto.productodes;
-                idct = producto.idct;
-                preciooriginal = producto.precio;
-                break;
-            }
-        }*/
         productodes = producto.productodes;
         idct = producto.idct;
         preciooriginal = producto.precio;
-        //Toast.makeText(getActivity(),productodes,Toast.LENGTH_SHORT).show();
 
         detallePedidoProvisional = new DetallePedidoProvisional();
         detallePedidoProvisional.idpt = idpt;

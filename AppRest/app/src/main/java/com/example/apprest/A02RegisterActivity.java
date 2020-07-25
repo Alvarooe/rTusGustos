@@ -77,8 +77,6 @@ public class A02RegisterActivity extends AppCompatActivity implements View.OnCli
                     @Override
                     public void onResponse(String response) {
                         Log.d("RESPUESTA",response);
-                        //enviarDetalle();
-                        //Toast.makeText(this, "Cliente creado",Toast.LENGTH_SHORT).show();
                         desplazarse();
                     }
                 }, new Response.ErrorListener() {

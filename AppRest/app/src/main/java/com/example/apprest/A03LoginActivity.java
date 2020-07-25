@@ -53,8 +53,6 @@ public class A03LoginActivity extends AppCompatActivity implements View.OnClickL
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_a03_login);
-        //ImageView img = (ImageView)findViewById(R.id.imLogoAnimado);
-        //img.setBackgroundResource(R.drawable.ic_logo_loop);
         metCorreo = findViewById(R.id.etCorreo);
         metContrasena = findViewById(R.id.etContrasena);
         mbtnIniciarSesion = findViewById(R.id.btnIniciarSesion);
@@ -62,14 +60,11 @@ public class A03LoginActivity extends AppCompatActivity implements View.OnClickL
         mchkGuardarSesion = findViewById(R.id.chkGuardarSesion);
         mbtnIniciarSesion.setOnClickListener(this);
         mbtRegistrar.setOnClickListener(this);
-
-        //frameAnimation = (AnimationDrawable) img.getBackground();
     }
 
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
         super.onWindowFocusChanged(hasFocus);
-        //frameAnimation.start();
     }
 
     @Override
@@ -87,17 +82,12 @@ public class A03LoginActivity extends AppCompatActivity implements View.OnClickL
         startActivity(new Intent(this,A02RegisterActivity.class));
     }
 
-    /*public void iniciarSesion(View v) {startActivity(new Intent(this,A05PlatformActivity.class));
-    }*/
-
     public void iniciarSesion() {
         final String usuario = metCorreo.getText().toString();
         final String clave = metContrasena.getText().toString();
 
         RequestQueue queue = Volley.newRequestQueue(this);
-        //String url ="http://172.17.69.19/servicio/servicioproductos.php";
         String url = Parametros.rutaServidor + "iniciarsesion_s.php";
-        //String url ="http://localhost/servicio/servicioproductos.php";
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
                 new Response.Listener<String>() {
@@ -122,7 +112,6 @@ public class A03LoginActivity extends AppCompatActivity implements View.OnClickL
         };
 // Add the request to the RequestQueue.
         queue.add(stringRequest);
-        //startActivity(new Intent(this,EscritorioActivity.class));
     }
 
     private void evaluarRespuesta(String response) {
@@ -135,7 +124,6 @@ public class A03LoginActivity extends AppCompatActivity implements View.OnClickL
 
                 JSONArray jsonArray = new JSONArray(response);
                 JSONObject jsonObject = jsonArray.getJSONObject(0);
-                //String nombre = jsonObject.getString("nombre");
 
                 Cliente.idCliente = jsonObject.getString("idCliente");
                 Cliente.nombre = jsonObject.getString("nombre");
@@ -149,7 +137,6 @@ public class A03LoginActivity extends AppCompatActivity implements View.OnClickL
                 Cliente.ciudadResidencia = jsonObject.getString("ciudadResidencia");
                 Cliente.distritoResidencia = jsonObject.getString("distritoResidencia");
                 Cliente.estado = jsonObject.getString("estado");
-                //Parametros.coleccion = new ArrayList<>();
                 Coleccion.micoleccion = new ArrayList<>();
                 ColeccionRegla.micoleccionregla = new ArrayList<>();
                 ColeccionCategoria.micoleccioncategoria = new ArrayList<>();
@@ -178,9 +165,6 @@ public class A03LoginActivity extends AppCompatActivity implements View.OnClickL
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        //final String response2 = response;
-                        //Log.d("Categorías: ", response);
-                        //Toast.makeText(getApplicationContext(), response,Toast.LENGTH_LONG).show(); //ok
                         guardarCategorias(response);
                     }
 
@@ -195,12 +179,8 @@ public class A03LoginActivity extends AppCompatActivity implements View.OnClickL
     }
 
     private void guardarCategorias(String response) {
-        //Toast.makeText(this,"Ok", Toast.LENGTH_SHORT).show();
-        //Toast.makeText(this,response, Toast.LENGTH_SHORT).show();
         try {
-            //Esto es para que el texto sea interpretado en formato JSON
             JSONArray jsonArray = new JSONArray(response);
-            //ArrayList<HashMap<String,String>> arrayList = new ArrayList<>();
             for(int i = 0; i< jsonArray.length(); i++){
                 categoria = new Categoria();
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
@@ -208,7 +188,6 @@ public class A03LoginActivity extends AppCompatActivity implements View.OnClickL
                 categoria.categoriades = jsonObject.getString("categoriades");
                 ColeccionCategoria.micoleccioncategoria.add(i,categoria);
             }
-            //Toast.makeText(this,"Tamaño: " + ColeccionCategoria.micoleccioncategoria.size(), Toast.LENGTH_SHORT).show();
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -239,9 +218,7 @@ public class A03LoginActivity extends AppCompatActivity implements View.OnClickL
 
     private void guardarProductos(String response) {
         try {
-            //Esto es para que el texto sea interpretado en formato JSON
             JSONArray jsonArray = new JSONArray(response);
-            //ArrayList<HashMap<String,String>> arrayList = new ArrayList<>();
             for(int i = 0; i< jsonArray.length(); i++){
                 producto = new Producto();
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
@@ -252,7 +229,6 @@ public class A03LoginActivity extends AppCompatActivity implements View.OnClickL
                 producto.rutaimagen = jsonObject.getString("rutaimagen");
                 ColeccionProducto.micoleccionproducto.add(i,producto);
             }
-            //Toast.makeText(this,"Tamaño: " + ColeccionProducto.micoleccionproducto.size(), Toast.LENGTH_SHORT).show();
         } catch (JSONException e) {
             e.printStackTrace();
         }

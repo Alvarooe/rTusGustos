@@ -6,15 +6,15 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_inicio"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/ic_home_black_24dp"
             android:title="@string/menu_inicio" />
         <item
             android:id="@+id/nav_menu"
-            android:icon="@drawable/ic_menu_gallery"
+            android:icon="@drawable/ic_restaurant_black_24dp"
             android:title="@string/menu_menu" />
         <item
             android:id="@+id/nav_pedido"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/ic_mode_edit_black_24dp"
             android:title="@string/menu_pedido" />
         <!--<item
             android:id="@+id/nav_promocion"
@@ -26,15 +26,15 @@
         <menu>
             <item
                 android:id="@+id/nav_contacto"
-                android:icon="@drawable/ic_menu_manage"
+                android:icon="@drawable/ic_info_outline_black_24dp"
                 android:title="@string/menu_contacto" />
             <item
                 android:id="@+id/nav_cerrarSesion"
-                android:icon="@drawable/ic_menu_share"
+                android:icon="@drawable/ic_perm_identity_black_24dp"
                 android:title="@string/cerrar_sesion" />
             <item
                 android:id="@+id/nav_salir"
-                android:icon="@drawable/ic_menu_send"
+                android:icon="@drawable/ic_exit_to_app_black_24dp"
                 android:title="@string/menu_salir" />
         </menu>
     </item>

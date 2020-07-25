@@ -68,7 +68,6 @@ public class A08bPedido2Fragment extends Fragment implements AdapterView.OnItemC
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_a08b_pedido2, container, false);
     }
 
@@ -102,19 +101,6 @@ public class A08bPedido2Fragment extends Fragment implements AdapterView.OnItemC
         }
         FloatingActionButton fab = getActivity().findViewById(R.id.fab);
         fab.hide();
-
-        //NVO
-//        mivRegresar = view.findViewById(R.id.ivRegresar);
-//        mivRegresar.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//                getActivity().onBackPressed();
-//                //FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
-//                //ft.popbBackStack(); /*KO*/
-//                //getActivity().getSupportFragmentManager().popBackStack(); /*KO*/
-//            }
-//        });
 
         //getActivity().setTitle(categoriades);
 
@@ -199,12 +185,6 @@ public class A08bPedido2Fragment extends Fragment implements AdapterView.OnItemC
                     @Override
                     public void onResponse(String response) {
                         final String response2 = response.toString();
-                        //Log.d("REGLAS",response);
-                        //Toast.makeText(getActivity(), response,Toast.LENGTH_SHORT).show(); //OK
-                        //Toast.makeText(getActivity(), "respuesta 2",Toast.LENGTH_SHORT).show(); //OK
-                        //Toast.makeText(getActivity(), response2,Toast.LENGTH_LONG).show(); //OK
-                        //guardarReglas(response2);
-                        //guardarReglas("algo");
                         guardarReglas(response2.toString());
                     }
                 }, new Response.ErrorListener() {
@@ -224,11 +204,7 @@ public class A08bPedido2Fragment extends Fragment implements AdapterView.OnItemC
     }
 
     private void guardarReglas(String response) {
-        //Toast.makeText(getActivity(), "Guardará reglas",Toast.LENGTH_LONG).show(); //OK
-        //Toast.makeText(getActivity(), response.toString(),Toast.LENGTH_LONG).show(); //OK
         try {
-            //Log.d("PRODUCTOS (mostrarLP): ",response);
-            //Toast.makeText(getActivity(), "Guardará reglas",Toast.LENGTH_SHORT).show(); //KO
             JSONArray jsonArray = new JSONArray(response);
             for(int i= 0; i<jsonArray.length(); i++){
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
@@ -267,17 +243,6 @@ public class A08bPedido2Fragment extends Fragment implements AdapterView.OnItemC
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        //Toast.makeText(getActivity(), "ok",Toast.LENGTH_LONG).show(); //OK
-
-        //Object[] reglaarray = ColeccionRegla.micoleccionregla.toArray();
-        //Toast.makeText(getActivity(), reglaarray.toString(),Toast.LENGTH_LONG).show(); //KO
-        //for(int i2 = 0; i2 < reglaarray.length; i2++) {
-            //Log.d("Regla: ", (String) reglaarray[i2]); //KO
-            //Toast.makeText(getActivity(), reglaarray[i2].toString(),Toast.LENGTH_LONG).show(); //KO
-        //}
-        //Regla regla0 = (Regla) ColeccionRegla.micoleccionregla.get(0);
-        //Toast.makeText(getActivity(), regla0.idpt,Toast.LENGTH_LONG).show(); //KO
-        //Toast.makeText(getActivity(), "fin",Toast.LENGTH_LONG).show(); //KO
 
     }
 
@@ -309,15 +274,10 @@ public class A08bPedido2Fragment extends Fragment implements AdapterView.OnItemC
                 perfil.idpt = "1";
             }
         }
-        //Object perfilcad = perfil.toString();
-        //Log.d("perfil: ", (String) perfilcad);
-        //Toast.makeText(getActivity(), perfil.toString(),Toast.LENGTH_LONG).show();
-        //Toast.makeText(getActivity(), perfil.idcliente,Toast.LENGTH_LONG).show(); //ok
         extraerRegla();
     }
 
     private void extraerRegla() {
-        //Toast.makeText(getActivity(), perfil.idcliente,Toast.LENGTH_LONG).show(); //ok
         String str="";
         boolean coinciden = true;
         try {
@@ -332,7 +292,6 @@ public class A08bPedido2Fragment extends Fragment implements AdapterView.OnItemC
                 //str += field.getName() + ": " + field.get(perfil) + "; "; //ok
                 str += field.getName() + ": " + field.get(ColeccionRegla.micoleccionregla.get(0)) + "; "; //ok
             };
-            //Toast.makeText(getActivity(), str, Toast.LENGTH_LONG).show(); //ok
             for (int i = 0; i < ColeccionRegla.micoleccionregla.size(); i++) {
                 Class<?> c1 = perfil.getClass();
                 Field[] fields1 = c1.getDeclaredFields();
@@ -371,14 +330,6 @@ public class A08bPedido2Fragment extends Fragment implements AdapterView.OnItemC
 
                     a088RecomendacionFragment.setArguments(bundle);
 
-                    //Para llamar desde un fragment a otro fragment
-        /*getFragmentManager().beginTransaction()
-                .replace(R.id.contenedor_principal,a07bDetalle2Fragment)
-                .commit();*/
-        /*getFragmentManager().beginTransaction()
-                .replace(R.id.contenedor_principal,a07bDetalle2Fragment)
-                .addToBackStack(null)
-                .commit();*/
                     getActivity().getSupportFragmentManager().beginTransaction()
                             .replace(R.id.contenedor_principal, a088RecomendacionFragment,"A08bPedido2Fragment")
                             .addToBackStack(null)
@@ -390,7 +341,6 @@ public class A08bPedido2Fragment extends Fragment implements AdapterView.OnItemC
             e.printStackTrace();
 
         }
-        //Toast.makeText(getActivity(), "str: " +  str, Toast.LENGTH_LONG).show(); //ok //ok
     }
 
     private void limpiar() {
@@ -398,7 +348,6 @@ public class A08bPedido2Fragment extends Fragment implements AdapterView.OnItemC
         Parametros.PedidoHecho = 0;
         mbtPedir.setEnabled(true);
         mbtPedir.setAlpha(1f);
-        //Toast.makeText(this,"Colección vaciada",Toast.LENGTH_SHORT).show();
         getFragmentManager().beginTransaction().detach(this).attach(this).commit();
     }
 
